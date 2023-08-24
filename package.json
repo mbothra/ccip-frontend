@@ -1,0 +1,31 @@
+{
+  "name": "my-nft-explorer",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "marketplace": "npx create-web3-dapp marketplace"
+  },
+  "dependencies": {
+    "@chainlink/design-system": "^0.2.3",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/montserrat": "^5.0.8",
+    "@mui/material": "^5.14.5",
+    "@rainbow-me/rainbowkit": "^0.12.4",
+    "alchemy-sdk": "^2.6.2",
+    "next": "13.1.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-table": "^7.8.0",
+    "react-virtuoso": "^4.5.0",
+    "wagmi": "^0.12.6"
+  },
+  "devDependencies": {
+    "eslint": "8.36.0",
+    "eslint-config-next": "13.2.4"
+  }
+}

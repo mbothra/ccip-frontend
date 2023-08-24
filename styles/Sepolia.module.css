@@ -1,0 +1,60 @@
+/* Basic container to give some padding and center everything */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f7f9fc;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 1400px;  /* Adjusted width */
+}
+
+/* Table styles */
+.table {
+    width: 100%;  /* Adjusted width */
+    border-collapse: collapse;
+    margin-top: 2rem;
+}
+
+.table th, .table td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.table th {
+    background-color: #FFD700;
+    color: #333;
+    font-weight: bold;
+}
+
+.table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f4f4f4;
+}
+
+/* Playful button, might remind of Pixar's playful nature */
+.button {
+    background-color: #FF4500;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #FF6347;
+}
+
+/* Some general spacing for elements */
+.spacing {
+    margin: 2rem 0;
+    text-align: center;
+    
+}

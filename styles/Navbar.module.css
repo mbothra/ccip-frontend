@@ -1,0 +1,15 @@
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	padding: 2rem 4rem 0.8rem 4rem;
+	gap: 2rem;
+	/* background-color: #375bd2; */
+  }
+  
+  .alchemy_logo {
+	width: 10rem;
+	cursor: pointer;
+	/* background-color: #375bd2; */
+  }
+  
