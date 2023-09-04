@@ -659,6 +659,6 @@ export const receiverAbi = [
 ]
 
 export const contractAddress = {
-	'43113':'0x2305C757FC3358e4D7281E8275474aCb28060b94', //fuji
-	'11155111':'0x732C72881F2042FF7BEe9d33Eb182b7bB5928Fbb' //sepolia
+	'43113':'0x038c4337ab55bdD0EA1e7B2Efa115ce7978db119', //fuji
+	'11155111':'0x00Eb1B19C129e642665bC7dec21f92A818e6eC0c' //sepolia
 }

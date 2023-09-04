@@ -77,7 +77,7 @@ const App = () => {
       severity: 'success'
     });
         // Check if we've had 3 successful transactions
-    if (successfulTxsCount === 3) {
+    if (successfulTxsCount === 2) {
         try {
             setIsWaiting(true)
             setTransactionMessage("Processing batch cross-chain transaction...");
@@ -87,6 +87,13 @@ const App = () => {
         } catch (e) {
             setTransactionMessage("Error sending the batch transaction.");
             console.log("Error sending the send transaction:", e.message || e);
+            setIsWaiting(false)
+            setAlertProps({
+              open: true,
+              message: 'Batch Cross Chain Transaction failed!',
+              severity: 'error'
+            });    
+    
             return;
         }
         setIsWaiting(false)
