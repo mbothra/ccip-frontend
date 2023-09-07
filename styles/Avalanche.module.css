@@ -90,14 +90,13 @@
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Add a shadow to the button */
   letter-spacing: 1px; /* Add some letter spacing */
   background: linear-gradient(45deg, #375bd2, #375bd2); /* Add a gradient background */
-  width: 228%
+  width: 370%
 }
 
 .button:hover {
-  transform: scale(1.2);
+  transform: scale(1.02);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Increase the shadow on hover */
 }
-
 
 .chain1 {
   background-color: #F1C40F;
@@ -153,10 +152,34 @@
 
 .input {
   margin-top: 3%;
-  width: 100%;
+  width: 150%;
   padding: 8px 12px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-right: 20px; /* Increased space between input and button */
+}
+
+.pickButton {
+  margin-top: 20px;
+  background-color: #E74C3C;
+  color: #FFF;
+  border: none;
+  padding: 12px 25px;
+  font-size: 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.3s;
+  font-weight: bold; /* Make the text bolder */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a subtle shadow to the text */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Add a shadow to the button */
+  letter-spacing: 1px; /* Add some letter spacing */
+  background: linear-gradient(45deg, #375bd2, #375bd2); /* Add a gradient background */
+  width: 95%;
+  margin-right: 1%;
+}
+
+.pickButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Increase the shadow on hover */
 }

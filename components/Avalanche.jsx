@@ -76,38 +76,41 @@ const App = () => {
       message: 'Transaction completed successfully!',
       severity: 'success'
     });
-        // Check if we've had 3 successful transactions
-    if (successfulTxsCount === 2) {
-        try {
-            setIsWaiting(true)
-            setTransactionMessage("Processing batch cross-chain transaction...");
-            const sendTransaction = await senderContract.send(contractAddress['11155111']); // Adjust with proper function parameters if needed
-            await sendTransaction.wait();
-            setSuccessfulTxsCount(0); // reset the count
-        } catch (e) {
-            setTransactionMessage("Error sending the batch transaction.");
-            console.log("Error sending the send transaction:", e.message || e);
-            setIsWaiting(false)
-            setAlertProps({
-              open: true,
-              message: 'Batch Cross Chain Transaction failed!',
-              severity: 'error'
-            });    
-    
-            return;
-        }
+    // Process selected wallets here
+
+    try {
+        setIsWaiting(true)
+        setTransactionMessage("Sending cross-chain transaction using CCIP...");
+        const sendTransaction = await senderContract.send(contractAddress['11155111']); // Adjust with proper function parameters if needed
+        await sendTransaction.wait();
+        setSuccessfulTxsCount(0); // reset the count
+    } catch (e) {
+        setTransactionMessage("Error sending the batch transaction.");
+        console.log("Error sending the send transaction:", e.message || e);
         setIsWaiting(false)
         setAlertProps({
           open: true,
-          message: 'Batch Cross Chain Transaction successful!',
-          severity: 'success'
+          message: 'Batch Cross Chain Transaction failed!',
+          severity: 'error'
         });    
+
+        return;
     }
-    // Process selected wallets here
+  setIsWaiting(false)
+  setAlertProps({
+    open: true,
+    message: 'Batch Cross Chain Transaction successful!',
+    severity: 'success'
+  });    
+
     setSelectedWallets([]);
     setName('');
   };
 
+  const handleCrossChain = async () => {
+    const senderContract = new Contract(contractAddress[chain.id], senderAbi, signer)
+  }
+ 
   return (
     <div className={styles.container}>
     <h1 className={styles.tagline}>
@@ -134,7 +137,9 @@ const App = () => {
           className={styles.input}
           placeholder="Name"  /* Added placeholder */
         />
-        <button className={styles.button} onClick={handleSubmit}>Initiate Cross-Chain transfer to Ethereum</button>
+        {/* <button className={styles.pickButton} onClick={handleSubmit}>Pick bags</button> */}
+        <button className={styles.button} onClick={handleSubmit} disable>Initiate Cross-Chain transfer to Ethereum</button>
+        
       </div>
     <div className={styles.footerSteps}>
       <div className={styles.footerContent}>
