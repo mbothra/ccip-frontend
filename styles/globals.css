@@ -1,3 +1,5 @@
+@import '@chainlink/design-system/global-styles.css';
+
 html,
 body {
 	background-image: url('/background.png');

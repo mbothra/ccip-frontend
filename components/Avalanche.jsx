@@ -6,15 +6,44 @@ import { useAccount, useSigner, useNetwork } from "wagmi";
 import { Contract } from "alchemy-sdk";
 import AlertSnackbar from './AlertSnackbar';
 import TransactionModal from './TransactionModal';
+import button from '@chainlink/design-system/button.module.css'
+
+const CircleNumber = ({ number, text }) => {
+  const circleStyle = {
+    width: '30px',
+    height: '30px',
+    borderRadius: '50%',
+    backgroundColor: '#375bd2',
+    color: 'white',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: '14px'  // Spacing between the circle and the text
+  };
+
+  const textStyle = {
+    maxWidth: '240px',  // Adjust the width as needed
+    overflowWrap: 'break-word',
+    wordWrap: 'break-word',
+    color:'black'
+  };
+
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', margin: '0 50px' }}>
+      <div style={circleStyle}>{number}</div>
+      <div style={textStyle}>{text}</div>
+    </div>
+  );
+};
 
 
 const App = () => {
   const wallets = [
-    { id: 0, imageUrl: '/wallet.svg', chain: 'chain1' },
-    { id: 1, imageUrl: '/wallet.svg', chain: 'chain1' },
-    { id: 2, imageUrl: '/wallet.svg', chain: 'chain1' },
-    { id: 3, imageUrl: '/wallet.svg', chain: 'chain1' },
-    { id: 4, imageUrl: '/wallet.svg', chain: 'chain1' },
+    { id: 0, imageUrl: '/A.svg', chain: 'chain1' },
+    { id: 1, imageUrl: '/B.svg', chain: 'chain1' },
+    { id: 2, imageUrl: '/C.svg', chain: 'chain1' },
+    { id: 3, imageUrl: '/D.svg', chain: 'chain1' },
+    { id: 4, imageUrl: '/E.svg', chain: 'chain1' },
   ];
   const [selectedWallets, setSelectedWallets] = useState([]);
   const [name, setName] = useState('');
@@ -28,6 +57,7 @@ const App = () => {
     severity: 'success'
   });
   const [successfulTxsCount, setSuccessfulTxsCount] = useState(0);
+  const [disabled, setDisabled] = useState(true)
 
   const handleSelect = (id) => {
     if (selectedWallets.includes(id)) {
@@ -113,41 +143,63 @@ const App = () => {
  
   return (
     <div className={styles.container}>
-    <h1 className={styles.tagline}>
-      Link, Sync, and Win! Make your Cross-chain move with <span className={styles.highlight}>Chainlink CCIP</span>  
-    </h1>
-    <div className={styles.wallets}>
-      {wallets.map((wallet) => (
-        <Wallet
-          key={wallet.id}
-          id={wallet.id}
-          imageUrl={wallet.imageUrl}
-          chain={wallet.chain}
-          selected={selectedWallets.includes(wallet.id)}
-          onSelect={handleSelect}
-          selectionOrder={selectedWallets.indexOf(wallet.id) + 1}
-        />
-      ))}
+    <h1>Chainlink CCIP</h1>
+    <p style={{color:'black'}}>Make your Cross-chain move with Chainlink CCIP</p>
+    <div className="card" style={{display:'flex', justifyContent: 'space-between', alignItems: 'center', width:'1200px'}}>
+      <CircleNumber number={1} text="Select three wallets" />
+      <CircleNumber number={2} text="Transfer Wallets cross-chain to Ethereum using CCIP" />
+      <CircleNumber number={3} text="Win swag based on the wallets you transferred" />
     </div>
-    <div className={styles.inputButtonContainer}>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className={styles.input}
-          placeholder="Name"  /* Added placeholder */
-        />
-        {/* <button className={styles.pickButton} onClick={handleSubmit}>Pick bags</button> */}
-        <button className={styles.button} onClick={handleSubmit} disable>Initiate Cross-Chain transfer to Ethereum</button>
-        
-      </div>
-    <div className={styles.footerSteps}>
-      <div className={styles.footerContent}>
-        <p>1. Select three wallets</p>
-        <p>2. Initiate cross-chain transfer of amount within these wallets to Sepolia</p>
-        <p>3. Win swag worth that amount</p>
+
+
+  <div className="card" style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop:'50px'}}>
+    <p style={{color:'black', alignContent: 'center'}}>Select three Wallets</p>
+      <div style={{display:'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+        {wallets.map((wallet) => (
+          <Wallet
+            key={wallet.id}
+            id={wallet.id}
+            imageUrl={wallet.imageUrl}
+            chain={wallet.chain}
+            selected={selectedWallets.includes(wallet.id)}
+            onSelect={handleSelect}
+            selectionOrder={selectedWallets.indexOf(wallet.id) + 1}
+          />
+        ))}
       </div>
     </div>
+
+    <div className="card" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '50px', width: '1200px' }}>
+    
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+
+            <p style={{ color: 'black', margin: '0 20px 0 -100px', alignSelf: 'center', textAlign: 'right', width: '500px' }}>
+                Initiate Cross-chain Transfer to Ethereum
+            </p>
+
+            <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Enter your Name"
+                style={{ maxWidth: '300px', marginRight: '20px' }}
+            />
+
+            <button 
+                className={button.primary} 
+                onClick={handleSubmit} 
+                disabled={!(selectedWallets.length === 3 && name.trim() !== '')}
+            >
+                Transfer
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+
     <AlertSnackbar 
       open={alertProps.open} 
       handleClose={() => setAlertProps(prev => ({ ...prev, open: false }))} 
