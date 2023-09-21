@@ -144,15 +144,15 @@ const App = () => {
   return (
     <div className={styles.container}>
     <h1>Chainlink CCIP</h1>
-    <p style={{color:'black'}}>Make your Cross-chain move with Chainlink CCIP</p>
+    <p style={{color:'black'}}>Make your cross-chain move with Chainlink CCIP</p>
     <div className="card" style={{display:'flex', justifyContent: 'space-between', alignItems: 'center', width:'1200px'}}>
       <CircleNumber number={1} text="Select three wallets" />
-      <CircleNumber number={2} text="Transfer Wallets cross-chain to Ethereum using CCIP" />
+      <CircleNumber number={2} text="Transfer wallets cross-chain to Ethereum using CCIP" />
       <CircleNumber number={3} text="Win swag based on the wallets you transferred" />
     </div>
 
 
-  <div className="card" style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop:'50px'}}>
+  <div className="card" style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop:'34px'}}>
     <p style={{color:'black', alignContent: 'center'}}>Select three Wallets</p>
       <div style={{display:'flex', justifyContent: 'space-between', alignItems: 'center'}}>
         {wallets.map((wallet) => (
@@ -169,7 +169,7 @@ const App = () => {
       </div>
     </div>
 
-    <div className="card" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '50px', width: '1200px' }}>
+    <div className="card" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '34px', width: '1200px' }}>
     
         <div style={{ display: 'flex', alignItems: 'center' }}>
 
