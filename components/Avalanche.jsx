@@ -58,6 +58,7 @@ const App = () => {
   });
   const [successfulTxsCount, setSuccessfulTxsCount] = useState(0);
   const [disabled, setDisabled] = useState(true)
+  const [gif, setGif] = useState('')
 
   const handleSelect = (id) => {
     if (selectedWallets.includes(id)) {
@@ -109,18 +110,21 @@ const App = () => {
     // Process selected wallets here
 
     try {
+        setGif('/CCIP.gif')
         setIsWaiting(true)
         setTransactionMessage("Sending cross-chain transaction using CCIP...");
         const sendTransaction = await senderContract.send(contractAddress['11155111']); // Adjust with proper function parameters if needed
         await sendTransaction.wait();
+        setGif('')
         setSuccessfulTxsCount(0); // reset the count
     } catch (e) {
+        setGif('')
         setTransactionMessage("Error sending the batch transaction.");
         console.log("Error sending the send transaction:", e.message || e);
         setIsWaiting(false)
         setAlertProps({
           open: true,
-          message: 'Batch Cross Chain Transaction failed!',
+          message: 'Cross Chain Transaction failed!',
           severity: 'error'
         });    
 
@@ -129,7 +133,7 @@ const App = () => {
   setIsWaiting(false)
   setAlertProps({
     open: true,
-    message: 'Batch Cross Chain Transaction successful!',
+    message: 'Cross Chain Transaction successful!',
     severity: 'success'
   });    
 
@@ -206,7 +210,7 @@ const App = () => {
       message={alertProps.message} 
       severity={alertProps.severity} 
     />
-    <TransactionModal open={isWaiting} message={transactionMessage} />
+    <TransactionModal open={isWaiting} message={transactionMessage} gif={gif}/>
 
   </div>
   );

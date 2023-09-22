@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, CircularProgress, Box, Typography } from '@mui/material';
 
-const TransactionModal = ({ open, message }) => {
+const TransactionModal = ({ open, message, gif }) => {
   return (
     <Modal open={open} aria-labelledby="transaction-modal-title">
       <Box 
@@ -19,7 +19,7 @@ const TransactionModal = ({ open, message }) => {
           gap: 2 
         }}
       >
-        <CircularProgress />
+        {gif && gif.trim() !== ''? <img src={gif} alt="Transaction GIF" style={{ width: '100%', height: 'auto', marginBottom: '20px' }} /> : <CircularProgress />}
         <Typography id="transaction-modal-title" variant="h6">
           {message}
         </Typography>
