@@ -147,8 +147,8 @@ const App = () => {
  
   return (
     <div className={styles.container}>
-    <h1>Chainlink CCIP</h1>
-    <p style={{color:'black'}}>Make your cross-chain move with Chainlink CCIP</p>
+    <h1>Chainlink CCIP Game</h1>
+    <p style={{color:'black'}}>Random prizes. Certain cross-chain execution. Win swag</p>
     <div className="card" style={{display:'flex', justifyContent: 'space-between', alignItems: 'center', width:'1200px'}}>
       <CircleNumber number={1} text="Select three wallets" />
       <CircleNumber number={2} text="Transfer wallets cross-chain to Ethereum using CCIP" />
