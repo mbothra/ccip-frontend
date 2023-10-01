@@ -7,6 +7,7 @@ export default function Navbar() {
                 <img
                     className={styles.alchemy_logo}
                     src="/Chainlink.png"
+                    onClick={() => document.documentElement.requestFullscreen()}
                 ></img>
             </a>
             <ConnectButton style={{fontWeight:'200'}}></ConnectButton>
